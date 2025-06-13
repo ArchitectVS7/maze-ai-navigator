@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Maze AI Navigator - Phase 2</title>
+    
+    <!-- Modular CSS Files -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <div class="header">
+        <h1>🧩 3D Maze AI Navigator</h1>
+        <p>Educational Maze Generation & 3D Visualization - Phase 2</p>
+    </div>
+
+    <div class="main-container">
+        <!-- Control Panel -->
+        <div class="control-panel" id="controlPanel">
+            <div class="control-section">
+                <h3>🔧 Maze Algorithms</h3>
+                <div class="algorithm-buttons" id="algorithmButtons">
+                    <button class="algorithm-btn active" data-algorithm="recursive">
+                        🌲 Recursive Backtracking
+                    </button>
+                    <button class="algorithm-btn" data-algorithm="kruskal">
+                        🔗 Modified Kruskal's
+                    </button>
+                    <button class="algorithm-btn" data-algorithm="cellular">
+                        🕳️ Cellular Automata
+                    </button>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <h3>⚡ Generation Controls</h3>
+                <div class="control-buttons">
+                    <button class="action-btn generate-btn" id="generateBtn">
+                        🎲 Generate New Maze
+                    </button>
+                    <button class="action-btn reset-btn" id="resetBtn">
+                        🔄 Reset Canvas
+                    </button>
+                    <button class="action-btn view-btn" id="toggleViewBtn">
+                        🔄 Switch to 3D View
+                    </button>
+                </div>
+
+                <div class="speed-control">
+                    <label for="speedSlider">⏱️ Animation Speed:</label>
+                    <input type="range" id="speedSlider" class="speed-slider" min="1" max="10" value="5">
+                    <div class="speed-labels">
+                        <span>Slow</span>
+                        <span>Fast</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-indicator">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="generation-status" id="generationStatus">Ready to generate</div>
+            </div>
+
+            <div class="info-panel">
+                <h4>📚 Algorithm Info</h4>
+                <div class="algorithm-description" id="algorithmDescription">
+                    <h4>Recursive Backtracking</h4>
+                    <p>Creates perfect mazes with exactly one solution between any two points. Uses depth-first search with backtracking to carve paths.</p>
+                </div>
+            </div>
+
+            <div class="view-controls" id="viewControls" style="display: none;">
+                <h4>🎥 3D Camera Controls</h4>
+                <div class="camera-buttons">
+                    <button class="camera-btn" data-view="overhead">🔝 Overhead</button>
+                    <button class="camera-btn" data-view="perspective">👁️ Perspective</button>
+                    <button class="camera-btn" data-view="first-person">🚶 First Person</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Visualization Container -->
+        <div class="maze-container">
+            <!-- 2D Canvas (Phase 1) -->
+            <canvas class="maze-canvas" id="mazeCanvas" width="600" height="600"></canvas>
+            
+            <!-- 3D Container (Phase 2) -->
+            <div class="maze-3d-container" id="maze3DContainer" style="display: none;">
+                <div id="threejs-container"></div>
+            </div>
+            
+            <!-- Statistics Dashboard -->
+            <div class="maze-stats">
+                <div class="stat-item">
+                    <div class="stat-value" id="mazeSize">-</div>
+                    <div class="stat-label">Maze Size</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="generationSteps">-</div>
+                    <div class="stat-label">Generation Steps</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="pathPercentage">-</div>
+                    <div class="stat-label">Path Coverage</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="generationTime">-</div>
+                    <div class="stat-label">Generation Time</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modular JavaScript Files - Load in dependency order -->
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    
+    <!-- UI Modules -->
+    <script src="js/ui/eventBus.js"></script>
+    <script src="js/ui/controls.js"></script>
+    <script src="js/ui/display.js"></script>
+    <script src="js/ui/animations.js"></script>
+    
+    <!-- Maze Generation Modules -->
+    <script src="js/maze/renderer.js"></script>
+    <script src="js/maze/algorithms/recursive.js"></script>
+    <script src="js/maze/algorithms/kruskal.js"></script>
+    <script src="js/maze/algorithms/cellular.js"></script>
+    <script src="js/maze/generator.js"></script>
+    
+    <!-- 3D Rendering Modules -->
+    <script src="js/3d/materials.js"></script>
+    <script src="js/3d/geometry.js"></script>
+    <script src="js/3d/camera.js"></script>
+    <script src="js/3d/scene.js"></script>
+    
+    <!-- Main Application -->
+    <script src="js/main.js"></script>
+</body>
+</html>
